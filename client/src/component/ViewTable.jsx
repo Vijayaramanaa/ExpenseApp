@@ -124,6 +124,8 @@ const ViewTable = ({search}) => {
         </div>
       );
 
+      
+
   };
 
 export default ViewTable

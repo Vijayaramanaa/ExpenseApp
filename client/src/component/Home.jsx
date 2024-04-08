@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import ViewTable from './ViewTable';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 
 
 
@@ -9,6 +9,12 @@ function Home() {
     Date : "",
     Sname : ""
   })
+  const navi = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem("UserLogin")){
+      navi("/login")
+    }
+  },[])
   return (
     <div className='flex flex-col justify-around gap-6'>
     <div className="flex flex-col sm:flex-row justify-between p-4 bg-gray-200">

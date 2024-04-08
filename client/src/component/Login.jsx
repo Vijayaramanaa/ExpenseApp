@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom"
 
 function Login() {
@@ -14,15 +14,16 @@ function Login() {
             if(login.Email.trim()=== "" || login.Password.trim()=== ""){
                 alert(error)
             }else{
-
+              localStorage.setItem("UserLogin",JSON.stringify(login))
               navi("/")
             }
-
-            
-        
-
     }
-    console.log(login)
+    useEffect(()=>{
+      if(localStorage.getItem("UserLogin")){
+        navi("/")
+      }
+    },[])
+
   return (
 <div class="flex min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 justify-center items-center">
   <div class="w-full max-w-md p-8 rounded-lg bg-white shadow-md">
